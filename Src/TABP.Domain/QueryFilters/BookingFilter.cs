@@ -1,11 +1,13 @@
-﻿namespace TABP.Domain.Filters;
+﻿using TABP.Domain.Enums;
+
+namespace TABP.Domain.QueryFilters;
 
 public class BookingFilter
 {
-    public Guid? UserID { get; set; }
-    public Guid? RoomID { get; set; }
+    public Guid? UserId { get; set; }
+    public Guid? RoomId { get; set; }
 
-    public string? Currency { get; set; }
+    public Currency? Currency { get; set; }
 
     public decimal? MinTotalPrice { get; set; }
     public decimal? MaxTotalPrice { get; set; }
@@ -19,8 +21,8 @@ public class BookingFilter
     public DateTime? StartDateFrom { get; set; }
     public DateTime? StartDateTo { get; set; }
 
-    public DateTime? EndDateFrom { get; set; }
-    public DateTime? EndDateTo { get; set; }
+    public DateTime? CreatedAtFrom { get; set; }
+    public DateTime? CreatedAtTo { get; set; }
 
     public DateTime? BookingDateFrom { get; set; }
     public DateTime? BookingDateTo { get; set; }
@@ -28,5 +30,5 @@ public class BookingFilter
     public int PageNumber { get; set; } = 1;
     public int PageSize { get; set; } = 10;
 
-    public List<SortCriteria> SortBy { get; set; } = new List<SortCriteria>();
+    public List<SortCriteria> SortBy { get; set; } = new();
 }

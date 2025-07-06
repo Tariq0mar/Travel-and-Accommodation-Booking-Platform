@@ -1,4 +1,4 @@
-﻿namespace TABP.Domain.Filters;
+﻿namespace TABP.Domain.QueryFilters;
 
 public class LocationFilter
 {
@@ -8,5 +8,5 @@ public class LocationFilter
     public int PageNumber { get; set; } = 1;
     public int PageSize { get; set; } = 10;
 
-    public List<SortCriteria> SortBy { get; set; } = new List<SortCriteria>();
+    public List<SortCriteria> SortBy { get; set; } = new();
 }

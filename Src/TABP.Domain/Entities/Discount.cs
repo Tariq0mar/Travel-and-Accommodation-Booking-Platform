@@ -9,9 +9,9 @@ public class Discount
     public required string Name { get; set; }
     public string? Description { get; set; }
     public required DiscountType DiscountType { get; set; }
-    public required decimal Value { get; set; }
     public required Currency Currency { get; set; }
     public bool IsActive { get; set; } = true;
+    public required decimal Value { get; set; }
     public required DateTime StartDate { get; set; }
     public required DateTime EndDate { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

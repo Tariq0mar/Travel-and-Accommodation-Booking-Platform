@@ -1,9 +1,9 @@
-﻿namespace TABP.Domain.Filters;
+﻿namespace TABP.Domain.QueryFilters;
 
-public class SortCriteria
+public class RoomGalleryFilter
 {
-    public required string Field { get; set; }
-    public bool Descending { get; set; } = false;
+    public Guid? GalleryId { get; set; }
+    public Guid? RoomId { get; set; }
 
     public int PageNumber { get; set; } = 1;
     public int PageSize { get; set; } = 10;

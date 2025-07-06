@@ -1,4 +1,4 @@
-﻿namespace TABP.Domain.Filters;
+﻿namespace TABP.Domain.QueryFilters;
 
 public class AmenityFilter
 {
@@ -7,5 +7,5 @@ public class AmenityFilter
     public int PageNumber { get; set; } = 1;
     public int PageSize { get; set; } = 10;
 
-    public List<SortCriteria> SortBy { get; set; } = new List<SortCriteria>();
+    public List<SortCriteria> SortBy { get; set; } = new();
 }

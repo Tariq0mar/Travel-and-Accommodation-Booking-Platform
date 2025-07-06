@@ -2,9 +2,9 @@
 
 public class RoomCategoryDiscount
 {
-    public Guid ID { get; set; }
-    public Guid DiscountID { get; set; }
-    public Guid RoomCategoryID { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid DiscountId { get; set; }
+    public Guid RoomCategoryId { get; set; }
 
     public required Discount Discount { get; set; }
     public required RoomCategory RoomCategory { get; set; }

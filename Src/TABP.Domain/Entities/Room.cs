@@ -2,17 +2,17 @@
 
 public class Room
 {
-    public Guid ID { get; set; } = Guid.NewGuid();
-    public Guid HotelID { get; set; }
-    public Guid CategoryID { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid HotelId { get; set; }
+    public Guid RoomCategoryId { get; set; }
 
     public required string Number { get; set; }
-    public bool IsAvailable { get; set; }
+    public bool IsAvailable { get; set; } = true;
 
     public required Hotel Hotel { get; set; }
-    public required RoomCategory Category { get; set; }
+    public required RoomCategory RoomCategory { get; set; }
     public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
-    public ICollection<Cart> CartItems { get; set; } = new List<Cart>();
-    public ICollection<RoomGallery> Galleries { get; set; } = new List<RoomGallery>();
-    public ICollection<RoomAmenities> Amenities { get; set; } = new List<RoomAmenities>();
+    public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+    public ICollection<RoomGallery> RoomGalleries { get; set; } = new List<RoomGallery>();
+    public ICollection<RoomAmenity> RoomAmenities { get; set; } = new List<RoomAmenity>();
 }

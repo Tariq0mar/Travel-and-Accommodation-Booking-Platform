@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces;
 
 public interface IHotelAmenitiesRepository
 {
-    Task<HotelAmenities?> GetByIdAsync(Guid id);
-    Task<IEnumerable<HotelAmenities>> GetAllAsync(HotelAmenitiesFilter filter);
-    Task<HotelAmenities> AddAsync(HotelAmenities hotelAmenities);
-    Task<bool> UpdateAsync(HotelAmenities hotelAmenities);
-    Task<bool> DeleteAsync(HotelAmenities hotelAmenities);
+    Task<HotelAmenity?> GetByIdAsync(Guid id);
+    Task<IEnumerable<HotelAmenity>> GetAllAsync(HotelAmenitiesFilter filter);
+    Task<HotelAmenity> AddAsync(HotelAmenity hotelAmenities);
+    Task<bool> UpdateAsync(HotelAmenity hotelAmenities);
+    Task<bool> DeleteAsync(HotelAmenity hotelAmenities);
 }

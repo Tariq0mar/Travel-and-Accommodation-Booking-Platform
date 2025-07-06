@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces;
 
 public interface IRoomAmenitiesRepository
 {
-    Task<RoomAmenities?> GetByIdAsync(Guid id);
-    Task<IEnumerable<RoomAmenities>> GetAllAsync(RoomAmenitiesFilter filter);
-    Task<RoomAmenities> AddAsync(RoomAmenities booking);
-    Task<bool> UpdateAsync(RoomAmenities booking);
-    Task<bool> DeleteAsync(RoomAmenities booking);
+    Task<RoomAmenity?> GetByIdAsync(Guid id);
+    Task<IEnumerable<RoomAmenity>> GetAllAsync(RoomAmenitiesFilter filter);
+    Task<RoomAmenity> AddAsync(RoomAmenity booking);
+    Task<bool> UpdateAsync(RoomAmenity booking);
+    Task<bool> DeleteAsync(RoomAmenity booking);
 }

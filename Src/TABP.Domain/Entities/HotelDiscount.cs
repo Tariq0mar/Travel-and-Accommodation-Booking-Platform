@@ -2,9 +2,9 @@
 
 public class HotelDiscount
 {
-    public Guid ID { get; set; }
-    public Guid DiscountID { get; set; }
-    public Guid HotelID { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid DiscountId { get; set; }
+    public Guid HotelId { get; set; }
 
     public required Discount Discount { get; set; }
     public required Hotel Hotel { get; set; }

@@ -1,15 +1,17 @@
-﻿namespace TABP.Domain.Entities;
+﻿using TABP.Domain.Enums;
+
+namespace TABP.Domain.Entities;
 
 public class Payment
 {
-    public Guid ID { get; set; } = Guid.NewGuid();
-    public Guid BookingID { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid BookingId { get; set; }
 
-    public byte PaymentMethodID { get; set; }
-    public decimal Amount { get; set; }
-    public required string Currency { get; set; }
-    public required string Status { get; set; }
-    public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
+    public required PaymentMethod PaymentMethod { get; set; }
+    public required decimal Amount { get; set; }
+    public required Currency Currency { get; set; }
+    public required PaymentStatus PaymentStatus { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public required Booking Booking { get; set; }
 }

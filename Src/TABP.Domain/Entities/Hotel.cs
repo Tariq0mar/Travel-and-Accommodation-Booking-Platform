@@ -1,19 +1,21 @@
-﻿namespace TABP.Domain.Entities;
+﻿using TABP.Domain.Enums;
+
+namespace TABP.Domain.Entities;
 
 public class Hotel
 {
-    public Guid ID { get; set; } = Guid.NewGuid();
-    public Guid LocationID { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid LocationId { get; set; }
 
     public required string Name { get; set; }
     public string? Description { get; set; }
-    public byte StarRating { get; set; }
-    public DateTime CreationDate { get; set; } = DateTime.UtcNow;
+    public required StarRating StarRating { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public required Location Location { get; set; }
     public ICollection<Room> Rooms { get; set; } = new List<Room>();
     public ICollection<Review> Reviews { get; set; } = new List<Review>();
-    public ICollection<HotelGallery> Galleries { get; set; } = new List<HotelGallery>();
-    public ICollection<HotelAmenities> Amenities { get; set; } = new List<HotelAmenities>();
-    public ICollection<HotelDiscount> Discounts { get; set; } = new List<HotelDiscount>();
+    public ICollection<HotelGallery> HotelGalleries { get; set; } = new List<HotelGallery>();
+    public ICollection<HotelAmenity> HotelAmenities { get; set; } = new List<HotelAmenity>();
+    public ICollection<HotelDiscount> HotelDiscounts { get; set; } = new List<HotelDiscount>();
 }

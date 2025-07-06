@@ -9,5 +9,5 @@ public interface ICartItemRepository
     Task<IEnumerable<CartItem>> GetAllAsync(CartItemFilter filter);
     Task<CartItem> AddAsync(CartItem cart);
     Task<bool> UpdateAsync(CartItem cart);
-    Task<bool> DeleteAsync(CartItem cart);
+    Task<bool> DeleteAsync(Guid id);
 }

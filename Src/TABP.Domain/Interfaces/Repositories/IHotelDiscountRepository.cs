@@ -9,5 +9,5 @@ public interface IHotelDiscountRepository
     Task<IEnumerable<HotelDiscount>> GetAllAsync(HotelDiscountFilter filter);
     Task<HotelDiscount> AddAsync(HotelDiscount hotelDiscount);
     Task<bool> UpdateAsync(HotelDiscount hotelDiscount);
-    Task<bool> DeleteAsync(HotelDiscount hotelDiscount);
+    Task<bool> DeleteAsync(Guid id);
 }

@@ -9,5 +9,5 @@ public interface IRoomAmenityRepository
     Task<IEnumerable<RoomAmenity>> GetAllAsync(RoomAmenityFilter filter);
     Task<RoomAmenity> AddAsync(RoomAmenity booking);
     Task<bool> UpdateAsync(RoomAmenity booking);
-    Task<bool> DeleteAsync(RoomAmenity booking);
+    Task<bool> DeleteAsync(Guid id);
 }

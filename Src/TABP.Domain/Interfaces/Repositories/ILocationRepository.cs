@@ -9,5 +9,5 @@ public interface ILocationRepository
     Task<IEnumerable<Location>> GetAllAsync(LocationFilter filter);
     Task<Location> AddAsync(Location location);
     Task<bool> UpdateAsync(Location location);
-    Task<bool> DeleteAsync(Location location);
+    Task<bool> DeleteAsync(Guid id);
 }

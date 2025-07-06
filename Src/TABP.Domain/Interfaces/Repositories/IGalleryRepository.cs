@@ -9,5 +9,5 @@ public interface IGalleryRepository
     Task<IEnumerable<Gallery>> GetAllAsync(GalleryFilter filter);
     Task<Gallery> AddAsync(Gallery gallery);
     Task<bool> UpdateAsync(Gallery gallery);
-    Task<bool> DeleteAsync(Gallery gallery);
+    Task<bool> DeleteAsync(Guid id);
 }

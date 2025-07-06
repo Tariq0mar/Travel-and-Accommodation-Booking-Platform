@@ -9,5 +9,5 @@ public interface IHotelGalleryRepository
     Task<IEnumerable<HotelGallery>> GetAllAsync(HotelGalleryFilter filter);
     Task<HotelGallery> AddAsync(HotelGallery hotelGallery);
     Task<bool> UpdateAsync(HotelGallery hotelGallery);
-    Task<bool> DeleteAsync(HotelGallery hotelGallery);
+    Task<bool> DeleteAsync(Guid id);
 }

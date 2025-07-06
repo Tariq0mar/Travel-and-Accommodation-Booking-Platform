@@ -9,5 +9,5 @@ public interface IRoomCategoryDiscountRepository
     Task<IEnumerable<RoomCategoryDiscount>> GetAllAsync(RoomCategoryDiscountFilter filter);
     Task<RoomCategoryDiscount> AddAsync(RoomCategoryDiscount roomCategoryDiscount);
     Task<bool> UpdateAsync(RoomCategoryDiscount roomCategoryDiscount);
-    Task<bool> DeleteAsync(RoomCategoryDiscount roomCategoryDiscount);
+    Task<bool> DeleteAsync(Guid id);
 }

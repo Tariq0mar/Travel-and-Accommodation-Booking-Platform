@@ -9,5 +9,5 @@ public interface IAmenityRepository
     Task<IEnumerable<Amenity>> GetAllAsync(AmenityFilter filter);
     Task<Amenity> AddAsync(Amenity amenity);
     Task<bool> UpdateAsync(Amenity amenity);
-    Task<bool> DeleteAsync(Amenity amenity);
+    Task<bool> DeleteAsync(Guid id);
 }

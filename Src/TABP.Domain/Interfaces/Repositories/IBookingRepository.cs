@@ -9,5 +9,5 @@ public interface IBookingRepository
     Task<IEnumerable<Booking>> GetAllAsync(BookingFilter filter);
     Task<Booking> AddAsync(Booking booking);
     Task<bool> UpdateAsync(Booking booking);
-    Task<bool> DeleteAsync(Booking booking);
+    Task<bool> DeleteAsync(Guid id);
 }

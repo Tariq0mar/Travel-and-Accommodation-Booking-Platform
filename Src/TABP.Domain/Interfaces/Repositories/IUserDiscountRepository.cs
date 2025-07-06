@@ -9,5 +9,5 @@ public interface IUserDiscountRepository
     Task<IEnumerable<UserDiscount>> GetAllAsync(UserDiscountFilter filter);
     Task<UserDiscount> AddAsync(UserDiscount userDiscount);
     Task<bool> UpdateAsync(UserDiscount userDiscount);
-    Task<bool> DeleteAsync(UserDiscount userDiscount);
+    Task<bool> DeleteAsync(Guid id);
 }

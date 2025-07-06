@@ -9,5 +9,5 @@ public interface IPaymentRepository
     Task<IEnumerable<Payment>> GetAllAsync(BookingFilter filter);
     Task<Payment> AddAsync(Payment payment);
     Task<bool> UpdateAsync(Payment payment);
-    Task<bool> DeleteAsync(Payment payment);
+    Task<bool> DeleteAsync(Guid id);
 }

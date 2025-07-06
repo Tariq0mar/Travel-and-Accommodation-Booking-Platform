@@ -1,7 +1,7 @@
 ﻿using TABP.Domain.Entities;
-using TABP.Domain.Filters;
+using TABP.Domain.QueryFilters;
 
-namespace TABP.Domain.Interfaces;
+namespace TABP.Domain.Interfaces.Repositories;
 
 public interface IUserRepository
 {

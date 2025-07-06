@@ -3,7 +3,7 @@ using TABP.Domain.QueryFilters;
 
 namespace TABP.Domain.Interfaces.Repositories;
 
-public interface IRoomAmenitiesRepository
+public interface IRoomAmenityRepository
 {
     Task<RoomAmenity?> GetByIdAsync(Guid id);
     Task<IEnumerable<RoomAmenity>> GetAllAsync(RoomAmenityFilter filter);

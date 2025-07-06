@@ -3,7 +3,7 @@ using TABP.Domain.QueryFilters;
 
 namespace TABP.Domain.Interfaces.Repositories;
 
-public interface IHotelAmenitiesRepository
+public interface IHotelAmenityRepository
 {
     Task<HotelAmenity?> GetByIdAsync(Guid id);
     Task<IEnumerable<HotelAmenity>> GetAllAsync(HotelAmenityFilter filter);

@@ -9,5 +9,5 @@ public interface IUserRepository
     Task<IEnumerable<User>> GetAllAsync(UserFilter filter);
     Task<User> AddAsync(User user);
     Task<bool> UpdateAsync(User user);
-    Task<bool> DeleteAsync(User user);
+    Task<bool> DeleteAsync(Guid id);
 }

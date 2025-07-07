@@ -10,4 +10,5 @@ public interface IHotelGalleryRepository
     Task<HotelGallery> AddAsync(HotelGallery hotelGallery);
     Task<bool> UpdateAsync(HotelGallery hotelGallery);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

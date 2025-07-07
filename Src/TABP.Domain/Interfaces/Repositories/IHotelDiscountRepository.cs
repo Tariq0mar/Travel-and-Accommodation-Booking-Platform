@@ -10,4 +10,5 @@ public interface IHotelDiscountRepository
     Task<HotelDiscount> AddAsync(HotelDiscount hotelDiscount);
     Task<bool> UpdateAsync(HotelDiscount hotelDiscount);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

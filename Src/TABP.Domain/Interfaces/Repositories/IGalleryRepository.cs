@@ -10,4 +10,5 @@ public interface IGalleryRepository
     Task<Gallery> AddAsync(Gallery gallery);
     Task<bool> UpdateAsync(Gallery gallery);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

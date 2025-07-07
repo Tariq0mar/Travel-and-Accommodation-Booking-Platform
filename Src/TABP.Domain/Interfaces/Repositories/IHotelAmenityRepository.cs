@@ -10,4 +10,5 @@ public interface IHotelAmenityRepository
     Task<HotelAmenity> AddAsync(HotelAmenity hotelAmenities);
     Task<bool> UpdateAsync(HotelAmenity hotelAmenities);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

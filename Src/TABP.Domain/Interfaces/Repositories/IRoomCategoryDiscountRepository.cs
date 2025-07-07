@@ -10,4 +10,5 @@ public interface IRoomCategoryDiscountRepository
     Task<RoomCategoryDiscount> AddAsync(RoomCategoryDiscount roomCategoryDiscount);
     Task<bool> UpdateAsync(RoomCategoryDiscount roomCategoryDiscount);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

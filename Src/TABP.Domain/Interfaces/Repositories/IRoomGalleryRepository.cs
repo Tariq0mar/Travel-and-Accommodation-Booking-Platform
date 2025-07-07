@@ -10,4 +10,5 @@ public interface IRoomGalleryRepository
     Task<RoomGallery> AddAsync(RoomGallery roomGallery);
     Task<bool> UpdateAsync(RoomGallery roomGallery);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

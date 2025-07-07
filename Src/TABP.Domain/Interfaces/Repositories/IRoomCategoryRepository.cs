@@ -10,4 +10,5 @@ public interface IRoomCategoryRepository
     Task<RoomCategory> AddAsync(RoomCategory roomCategory);
     Task<bool> UpdateAsync(RoomCategory roomCategory);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

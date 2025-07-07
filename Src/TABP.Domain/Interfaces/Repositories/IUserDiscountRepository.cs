@@ -10,4 +10,5 @@ public interface IUserDiscountRepository
     Task<UserDiscount> AddAsync(UserDiscount userDiscount);
     Task<bool> UpdateAsync(UserDiscount userDiscount);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

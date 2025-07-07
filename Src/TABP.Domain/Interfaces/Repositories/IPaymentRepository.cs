@@ -10,4 +10,5 @@ public interface IPaymentRepository
     Task<Payment> AddAsync(Payment payment);
     Task<bool> UpdateAsync(Payment payment);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

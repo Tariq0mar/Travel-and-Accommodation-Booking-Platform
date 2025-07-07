@@ -10,4 +10,5 @@ public interface IBookingRepository
     Task<Booking> AddAsync(Booking booking);
     Task<bool> UpdateAsync(Booking booking);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

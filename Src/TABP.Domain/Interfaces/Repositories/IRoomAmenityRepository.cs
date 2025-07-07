@@ -10,4 +10,5 @@ public interface IRoomAmenityRepository
     Task<RoomAmenity> AddAsync(RoomAmenity booking);
     Task<bool> UpdateAsync(RoomAmenity booking);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

@@ -10,4 +10,5 @@ public interface ILocationRepository
     Task<Location> AddAsync(Location location);
     Task<bool> UpdateAsync(Location location);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
 }

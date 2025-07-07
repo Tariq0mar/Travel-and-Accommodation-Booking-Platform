@@ -1,5 +1,5 @@
 ﻿using TABP.Domain.Entities;
-using TABP.Domain.QueryFilters;
+using TABP.Domain.QueryFilters.EntitiesFilters;
 
 namespace TABP.Domain.Interfaces.Services;
 

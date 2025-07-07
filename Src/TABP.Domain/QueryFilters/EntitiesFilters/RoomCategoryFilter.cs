@@ -1,4 +1,4 @@
-﻿namespace TABP.Domain.QueryFilters;
+﻿namespace TABP.Domain.QueryFilters.EntitiesFilters;
 
 public class RoomCategoryFilter
 {
@@ -13,8 +13,6 @@ public class RoomCategoryFilter
     public byte? MinChildrenCapacity { get; set; }
     public byte? MaxChildrenCapacity { get; set; }
 
-    public int PageNumber { get; set; } = 1;
-    public int PageSize { get; set; } = 10;
-
-    public List<SortCriteria> SortBy { get; set; } = new();
+    public string? Sort { get; set; }
+    public PaginationRecord Paging { get; set; } = new();
 }

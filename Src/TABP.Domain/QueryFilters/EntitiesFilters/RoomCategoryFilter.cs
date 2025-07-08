@@ -1,17 +1,19 @@
-﻿namespace TABP.Domain.QueryFilters.EntitiesFilters;
+﻿using TABP.Domain.Enums;
+
+namespace TABP.Domain.QueryFilters.EntitiesFilters;
 
 public class RoomCategoryFilter
 {
-    public string? Category { get; set; }
+    public RoomCategoryType? Category { get; set; }
 
     public decimal? MinPrice { get; set; }
     public decimal? MaxPrice { get; set; }
 
-    public byte? MinAdultsCapacity { get; set; }
-    public byte? MaxAdultsCapacity { get; set; }
+    public byte? MinAdultsCount { get; set; }
+    public byte? MaxAdultsCount { get; set; }
 
-    public byte? MinChildrenCapacity { get; set; }
-    public byte? MaxChildrenCapacity { get; set; }
+    public byte? MinChildrenCount { get; set; }
+    public byte? MaxChildrenCount { get; set; }
 
     public string? Sort { get; set; }
     public PaginationRecord Paging { get; set; } = new();

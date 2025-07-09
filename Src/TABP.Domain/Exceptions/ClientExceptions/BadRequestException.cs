@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace TABP.Domain.Exceptions;
+namespace TABP.Domain.Exceptions.ClientExceptions;
 
 public class BadRequestException : ClientException
 {

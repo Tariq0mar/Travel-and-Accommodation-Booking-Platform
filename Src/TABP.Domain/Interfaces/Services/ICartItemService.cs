@@ -3,7 +3,7 @@ using TABP.Domain.QueryFilters.EntitiesFilters;
 
 namespace TABP.Domain.Interfaces.Services;
 
-public interface ICartItemSerivce
+public interface ICartItemService
 {
     Task<CartItem> GetByIdAsync(int id);
     Task<IEnumerable<CartItem>> GetAllAsync(CartItemFilter queryFilter);

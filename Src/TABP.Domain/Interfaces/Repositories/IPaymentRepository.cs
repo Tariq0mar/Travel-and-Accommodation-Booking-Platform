@@ -6,7 +6,7 @@ namespace TABP.Domain.Interfaces.Repositories;
 public interface IPaymentRepository
 {
     Task<Payment?> GetByIdAsync(int id);
-    Task<IEnumerable<Payment>> GetAllAsync(BookingFilter filter);
+    Task<IEnumerable<Payment>> GetAllAsync(PaymentFilter filter);
     Task<Payment> AddAsync(Payment payment);
     Task<bool> UpdateAsync(Payment payment);
     Task<bool> DeleteAsync(int id);

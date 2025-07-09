@@ -23,6 +23,6 @@ public class UserValidator : AbstractValidator<User>
 
         RuleFor(x => x.Age)
             .GreaterThan(0)
-            .WithMessage("Age must be greater than 0.")
+            .WithMessage("Age must be greater than 0.");
     }
 }

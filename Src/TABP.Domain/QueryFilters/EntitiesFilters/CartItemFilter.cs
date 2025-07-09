@@ -2,8 +2,8 @@
 
 public class CartItemFilter
 {
-    public Guid? UserId { get; set; }
-    public Guid? RoomId { get; set; }
+    public int? UserId { get; set; }
+    public int? RoomId { get; set; }
 
     public int? MinQuantity { get; set; }
     public int? MaxQuantity { get; set; }

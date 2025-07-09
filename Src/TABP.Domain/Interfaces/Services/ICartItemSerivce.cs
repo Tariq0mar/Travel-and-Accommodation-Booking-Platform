@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces.Services;
 
 public interface ICartItemSerivce
 {
-    Task<CartItem> GetByIdAsync(Guid id);
+    Task<CartItem> GetByIdAsync(int id);
     Task<IEnumerable<CartItem>> GetAllAsync(CartItemFilter queryFilter);
     Task<CartItem> AddAsync(CartItem cartItem);
     Task UpdateAsync(CartItem cartItem);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }

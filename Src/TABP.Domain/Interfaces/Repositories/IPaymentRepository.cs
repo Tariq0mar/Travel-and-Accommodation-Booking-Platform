@@ -5,10 +5,10 @@ namespace TABP.Domain.Interfaces.Repositories;
 
 public interface IPaymentRepository
 {
-    Task<Payment?> GetByIdAsync(Guid id);
+    Task<Payment?> GetByIdAsync(int id);
     Task<IEnumerable<Payment>> GetAllAsync(BookingFilter filter);
     Task<Payment> AddAsync(Payment payment);
     Task<bool> UpdateAsync(Payment payment);
-    Task<bool> DeleteAsync(Guid id);
+    Task<bool> DeleteAsync(int id);
     Task SaveChangesAsync();
 }

@@ -4,8 +4,8 @@ namespace TABP.Domain.QueryFilters.EntitiesFilters;
 
 public class ReviewFilter
 {
-    public Guid? HotelId { get; set; }
-    public Guid? UserId { get; set; }
+    public int? HotelId { get; set; }
+    public int? UserId { get; set; }
 
 
     public StarRating? MinStarRating { get; set; }

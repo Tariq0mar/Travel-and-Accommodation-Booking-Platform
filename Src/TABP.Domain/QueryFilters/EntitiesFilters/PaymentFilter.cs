@@ -4,7 +4,7 @@ namespace TABP.Domain.QueryFilters.EntitiesFilters;
 
 public class PaymentFilter
 {
-    public Guid? BookingId { get; set; }
+    public int? BookingId { get; set; }
     public PaymentMethod? PaymentMethodId { get; set; }
     
     public decimal? MinAmount { get; set; }

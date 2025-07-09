@@ -5,10 +5,10 @@ namespace TABP.Domain.Interfaces.Repositories;
 
 public interface IRoomRepository
 {
-    Task<Room?> GetByIdAsync(Guid id);
+    Task<Room?> GetByIdAsync(int id);
     Task<IEnumerable<Room>> GetAllAsync(RoomFilter filter);
     Task<Room> AddAsync(Room room);
     Task<bool> UpdateAsync(Room room);
-    Task<bool> DeleteAsync(Guid id);
+    Task<bool> DeleteAsync(int id);
     Task SaveChangesAsync();
 }

@@ -2,8 +2,8 @@
 
 public class HotelGalleryFilter
 {
-    public Guid? GalleryId { get; set; }
-    public Guid? HotelId { get; set; }
+    public int? GalleryId { get; set; }
+    public int? HotelId { get; set; }
 
     public string? Sort { get; set; }
     public PaginationRecord Paging { get; set; } = new();

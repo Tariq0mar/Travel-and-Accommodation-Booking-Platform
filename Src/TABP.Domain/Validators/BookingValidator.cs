@@ -8,22 +8,13 @@ public class BookingValidator : AbstractValidator<Booking>
     public BookingValidator()
     {
         RuleFor(x => x.Id)
-            .NotEmpty()
-            .WithMessage("Id is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("Id cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("Id must be greater than zero.");
 
         RuleFor(x => x.UserId)
-            .NotEmpty()
-            .WithMessage("UserId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("UserId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("UserId must be greater than zero.");
 
         RuleFor(x => x.RoomId)
-            .NotEmpty()
-            .WithMessage("RoomId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("RoomId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("RoomId must be greater than zero.");
 
         RuleFor(x => x.Currency)
             .IsInEnum()

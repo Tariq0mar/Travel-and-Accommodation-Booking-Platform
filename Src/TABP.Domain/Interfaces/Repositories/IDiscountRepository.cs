@@ -5,10 +5,10 @@ namespace TABP.Domain.Interfaces.Repositories;
 
 public interface IDiscountRepository
 {
-    Task<Discount?> GetByIdAsync(Guid id);
+    Task<Discount?> GetByIdAsync(int id);
     Task<IEnumerable<Discount>> GetAllAsync(DiscountFilter filter);
     Task<Discount> AddAsync(Discount discount);
     Task<bool> UpdateAsync(Discount discount);
-    Task<bool> DeleteAsync(Guid id);
+    Task<bool> DeleteAsync(int id);
     Task SaveChangesAsync();
 }

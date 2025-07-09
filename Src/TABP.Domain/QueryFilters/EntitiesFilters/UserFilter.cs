@@ -4,7 +4,7 @@ namespace TABP.Domain.QueryFilters.EntitiesFilters;
 
 public class UserFilter
 {
-    public Guid? LocationId { get; set; }
+    public int? LocationId { get; set; }
 
     public string? UserName { get; set; }
     public string? Email { get; set; }

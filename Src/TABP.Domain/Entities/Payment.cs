@@ -4,8 +4,8 @@ namespace TABP.Domain.Entities;
 
 public class Payment
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid BookingId { get; set; }
+    public int Id { get; set; }
+    public int BookingId { get; set; }
 
     public required PaymentMethod PaymentMethod { get; set; }
     public required decimal Amount { get; set; }

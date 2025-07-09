@@ -2,7 +2,7 @@
 
 public class Location
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public int Id { get; set; }
 
     public required string Country { get; set; }
     public required string City { get; set; }

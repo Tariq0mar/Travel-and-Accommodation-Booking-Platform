@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces.Services;
 
 public interface IRoomCategoryService
 {
-    Task<RoomCategory> GetByIdAsync(Guid id);
+    Task<RoomCategory> GetByIdAsync(int id);
     Task<IEnumerable<RoomCategory>> GetAllAsync(RoomCategoryFilter queryFilter);
     Task<RoomCategory> AddAsync(RoomCategory roomCategory);
     Task UpdateAsync(RoomCategory roomCategory);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }

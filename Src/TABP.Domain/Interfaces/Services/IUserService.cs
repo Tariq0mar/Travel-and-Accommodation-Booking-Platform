@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces.Services;
 
 public interface IUserService
 {
-    Task<User> GetByIdAsync(Guid id);
+    Task<User> GetByIdAsync(int id);
     Task<IEnumerable<User>> GetAllAsync(UserFilter queryFilter);
     Task<User> AddAsync(User user);
     Task UpdateAsync(User user);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }

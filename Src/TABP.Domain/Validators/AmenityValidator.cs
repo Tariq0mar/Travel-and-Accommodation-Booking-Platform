@@ -8,9 +8,6 @@ public class AmenityValidator : AbstractValidator<Amenity>
     public AmenityValidator()
     {
         RuleFor(x => x.Id)
-            .NotEmpty()
-            .WithMessage("Id is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("Id cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("Id must be greater than zero.");
     }
 }

@@ -4,7 +4,7 @@ namespace TABP.Domain.QueryFilters.EntitiesFilters;
 
 public class HotelFilter
 {
-    public Guid? LocationId { get; set; }
+    public int? LocationId { get; set; }
 
     public string? Name { get; set; }
     

@@ -2,9 +2,9 @@
 
 public class RoomAmenity
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid AmenityId { get; set; }
-    public Guid RoomId { get; set; }
+    public int Id { get; set; }
+    public int AmenityId { get; set; }
+    public int RoomId { get; set; }
 
     public required Amenity Amenity { get; set; }
     public required Room Room { get; set; }

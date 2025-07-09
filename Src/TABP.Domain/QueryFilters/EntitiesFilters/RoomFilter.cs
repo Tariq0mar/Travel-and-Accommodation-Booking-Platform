@@ -2,8 +2,8 @@
 
 public class RoomFilter
 {
-    public Guid? HotelId { get; set; }
-    public Guid? CategoryId { get; set; }
+    public int? HotelId { get; set; }
+    public int? CategoryId { get; set; }
 
     public bool IsAvailable { get; set; }
 

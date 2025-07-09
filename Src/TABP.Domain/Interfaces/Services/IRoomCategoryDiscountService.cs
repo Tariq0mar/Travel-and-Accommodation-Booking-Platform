@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces.Services;
 
 public interface IRoomCategoryDiscountService
 {
-    Task<RoomCategoryDiscount> GetByIdAsync(Guid id);
+    Task<RoomCategoryDiscount> GetByIdAsync(int id);
     Task<IEnumerable<RoomCategoryDiscount>> GetAllAsync(RoomCategoryDiscountFilter queryFilter);
     Task<RoomCategoryDiscount> AddAsync(RoomCategoryDiscount roomCategoryDiscount);
     Task UpdateAsync(RoomCategoryDiscount roomCategoryDiscountoomCategoryDiscount);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }

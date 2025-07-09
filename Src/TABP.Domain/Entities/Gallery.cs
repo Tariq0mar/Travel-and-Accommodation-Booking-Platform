@@ -2,7 +2,7 @@
 
 public class Gallery
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public int Id { get; set; }
 
     public required string ImageUrl { get; set; }
     public string? Caption { get; set; }

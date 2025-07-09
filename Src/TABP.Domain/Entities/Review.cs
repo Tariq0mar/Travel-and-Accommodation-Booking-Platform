@@ -4,9 +4,9 @@ namespace TABP.Domain.Entities;
 
 public class Review
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid HotelId { get; set; }
-    public Guid UserId { get; set; }
+    public int Id { get; set; }
+    public int HotelId { get; set; }
+    public int UserId { get; set; }
 
     public required StarRating StarRating { get; set; }
     public string? Description { get; set; }

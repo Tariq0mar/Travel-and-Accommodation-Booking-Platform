@@ -8,21 +8,12 @@ public class RoomValidator : AbstractValidator<Room>
     public RoomValidator()
     {
         RuleFor(x => x.Id)
-            .NotEmpty()
-            .WithMessage("Id is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("Id cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("Id must be greater than zero.");
 
         RuleFor(x => x.HotelId)
-            .NotEmpty()
-            .WithMessage("HotelId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("HotelId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("HotelId must be greater than zero.");
 
         RuleFor(x => x.RoomCategoryId)
-            .NotEmpty()
-            .WithMessage("RoomCategoryId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("RoomCategoryId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("RoomCategoryId must be greater than zero.");
     }
 }

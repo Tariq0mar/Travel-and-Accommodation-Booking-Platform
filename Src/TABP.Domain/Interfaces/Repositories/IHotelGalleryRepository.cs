@@ -5,10 +5,10 @@ namespace TABP.Domain.Interfaces.Repositories;
 
 public interface IHotelGalleryRepository
 {
-    Task<HotelGallery?> GetByIdAsync(Guid id);
+    Task<HotelGallery?> GetByIdAsync(int id);
     Task<IEnumerable<HotelGallery>> GetAllAsync(HotelGalleryFilter filter);
     Task<HotelGallery> AddAsync(HotelGallery hotelGallery);
     Task<bool> UpdateAsync(HotelGallery hotelGallery);
-    Task<bool> DeleteAsync(Guid id);
+    Task<bool> DeleteAsync(int id);
     Task SaveChangesAsync();
 }

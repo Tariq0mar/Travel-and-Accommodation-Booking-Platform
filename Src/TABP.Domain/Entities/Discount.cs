@@ -4,7 +4,7 @@ namespace TABP.Domain.Entities;
 
 public class Discount
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public int Id { get; set; }
 
     public required string Name { get; set; }
     public string? Description { get; set; }

@@ -2,9 +2,9 @@
 
 public class CartItem
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid UserId { get; set; }
-    public Guid RoomId { get; set; }
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public int RoomId { get; set; }
 
     public int Quantity { get; set; } = 1;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

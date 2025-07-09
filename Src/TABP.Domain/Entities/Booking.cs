@@ -4,9 +4,9 @@ namespace TABP.Domain.Entities;
 
 public class Booking
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid UserId { get; set; }
-    public Guid RoomId { get; set; }
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public int RoomId { get; set; }
 
     public required Currency Currency { get; set; }
     public required decimal PriceWithoutDiscount { get; set; }

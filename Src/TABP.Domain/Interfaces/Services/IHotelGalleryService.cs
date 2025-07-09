@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces.Services;
 
 public interface IHotelGalleryService
 {
-    Task<HotelGallery> GetByIdAsync(Guid id);
+    Task<HotelGallery> GetByIdAsync(int id);
     Task<IEnumerable<HotelGallery>> GetAllAsync(HotelGalleryFilter queryFilter);
     Task<HotelGallery> AddAsync(HotelGallery hotelGallery);
     Task UpdateAsync(HotelGallery hotelGallery);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }

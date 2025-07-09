@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces.Services;
 
 public interface IHotelDiscountService
 {
-    Task<HotelDiscount> GetByIdAsync(Guid id);
+    Task<HotelDiscount> GetByIdAsync(int id);
     Task<IEnumerable<HotelDiscount>> GetAllAsync(HotelDiscountFilter queryFilter);
     Task<HotelDiscount> AddAsync(HotelDiscount hotelDiscount);
     Task UpdateAsync(HotelDiscount hotelDiscount);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }

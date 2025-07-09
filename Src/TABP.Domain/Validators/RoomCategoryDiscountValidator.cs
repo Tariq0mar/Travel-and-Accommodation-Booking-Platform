@@ -8,21 +8,12 @@ public class RoomCategoryDiscountValidator : AbstractValidator<RoomCategoryDisco
     public RoomCategoryDiscountValidator()
     {
         RuleFor(x => x.Id)
-            .NotEmpty()
-            .WithMessage("Id is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("Id cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("Id must be greater than zero.");
 
         RuleFor(x => x.DiscountId)
-            .NotEmpty()
-            .WithMessage("DiscountId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("DiscountId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("DiscountId must be greater than zero.");
 
         RuleFor(x => x.RoomCategoryId)
-            .NotEmpty()
-            .WithMessage("RoomCategoryId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("RoomCategoryId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("RoomCategoryId must be greater than zero.");
     }
 }

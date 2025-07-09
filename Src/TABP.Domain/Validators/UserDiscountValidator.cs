@@ -8,21 +8,12 @@ public class UserDiscountValidator : AbstractValidator<UserDiscount>
     public UserDiscountValidator()
     {
         RuleFor(x => x.Id)
-            .NotEmpty()
-            .WithMessage("Id is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("Id cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("Id must be greater than zero.");
 
         RuleFor(x => x.DiscountId)
-            .NotEmpty()
-            .WithMessage("DiscountId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("DiscountId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("DiscountId must be greater than zero.");
 
         RuleFor(x => x.UserId)
-            .NotEmpty()
-            .WithMessage("UserId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("UserId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("UserId must be greater than zero.");
     }
 }

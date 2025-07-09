@@ -8,21 +8,12 @@ public class RoomGalleryValidator : AbstractValidator<RoomGallery>
     public RoomGalleryValidator()
     {
         RuleFor(x => x.Id)
-            .NotEmpty()
-            .WithMessage("Id is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("Id cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("Id must be greater than zero.");
 
         RuleFor(x => x.GalleryId)
-            .NotEmpty()
-            .WithMessage("GalleryId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("GalleryId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("GalleryId must be greater than zero.");
 
         RuleFor(x => x.RoomId)
-            .NotEmpty()
-            .WithMessage("RoomId is required.")
-            .NotEqual(Guid.Empty)
-            .WithMessage("RoomId cannot be an empty GUID.");
+            .GreaterThan(0).WithMessage("RoomId must be greater than zero.");
     }
 }

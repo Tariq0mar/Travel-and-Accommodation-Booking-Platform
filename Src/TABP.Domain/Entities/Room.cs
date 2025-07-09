@@ -2,9 +2,9 @@
 
 public class Room
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid HotelId { get; set; }
-    public Guid RoomCategoryId { get; set; }
+    public int Id { get; set; }
+    public int HotelId { get; set; }
+    public int RoomCategoryId { get; set; }
 
     public required string Number { get; set; }
     public bool IsAvailable { get; set; } = true;

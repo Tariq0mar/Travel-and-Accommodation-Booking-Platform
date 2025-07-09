@@ -4,8 +4,8 @@ namespace TABP.Domain.Entities;
 
 public class Hotel
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid LocationId { get; set; }
+    public int Id { get; set; }
+    public int LocationId { get; set; }
 
     public required string Name { get; set; }
     public string? Description { get; set; }

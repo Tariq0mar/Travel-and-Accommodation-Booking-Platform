@@ -5,9 +5,9 @@ namespace TABP.Domain.Interfaces.Services;
 
 public interface ILocationService
 {
-    Task<Location> GetByIdAsync(Guid id);
+    Task<Location> GetByIdAsync(int id);
     Task<IEnumerable<Location>> GetAllAsync(LocationFilter queryFilter);
     Task<Location> AddAsync(Location location);
     Task UpdateAsync(Location location);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }

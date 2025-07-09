@@ -14,6 +14,6 @@ public class HotelDiscountValidator : AbstractValidator<HotelDiscount>
             .GreaterThan(0).WithMessage("DiscountId must be greater than zero.");
 
         RuleFor(x => x.HotelId)
-            .GreaterThan(0).WithMessage("HotelId must be greater than zero.")
+            .GreaterThan(0).WithMessage("HotelId must be greater than zero.");
     }
 }

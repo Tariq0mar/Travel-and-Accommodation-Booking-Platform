@@ -5,7 +5,6 @@ using TABP.Domain.Exceptions.ServerExceptions;
 using TABP.Domain.Interfaces.Repositories;
 using TABP.Domain.Interfaces.Services;
 using TABP.Domain.QueryFilters.EntitiesFilters;
-using TABP.Domain.Validators;
 
 namespace TABP.Application.Services;
 

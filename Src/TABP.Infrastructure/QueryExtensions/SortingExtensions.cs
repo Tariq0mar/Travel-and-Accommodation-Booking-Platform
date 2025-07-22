@@ -15,7 +15,7 @@ public static class SortingExtensions
 
         var parameter = Expression.Parameter(typeof(T), "x");
         var operations = new List<Func<IQueryable<T>, IQueryable<T>>>();
-        bool isFirst = true;
+        var isFirst = true;
 
         foreach (var (propertyName, direction) in criteria)
         {

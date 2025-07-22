@@ -8,23 +8,24 @@ using TABP.Infrastructure.QueryExtensions.EntityFilterExtensions;
 
 namespace TABP.Infrastructure.Repositories;
 
-public class BookingRepository : IBookingRepository
+public class HotelRepository : IHotelRepository
 {
     private readonly AppDbContext _context;
 
-    public BookingRepository(AppDbContext context)
+    public HotelRepository(AppDbContext context)
     {
         _context = context;
     }
-    public async Task<Booking?> GetByIdAsync(int id)
+
+    public async Task<Hotel?> GetByIdAsync(int id)
     {
-        return await _context.Bookings
+        return await _context.Hotels
             .FirstOrDefaultAsync(b => b.Id == id);
     }
 
-    public async Task<IEnumerable<Booking>> GetAllAsync(BookingFilter filter)
+    public async Task<IEnumerable<Hotel>> GetAllAsync(HotelFilter filter)
     {
-        var query = _context.Bookings.AsQueryable();
+        var query = _context.Hotels.AsQueryable();
 
         query = query.ApplyFilter(filter)
             .ApplySorting(filter.Sort)
@@ -33,30 +34,31 @@ public class BookingRepository : IBookingRepository
         return await query.ToListAsync();
     }
 
-    public async Task<Booking> AddAsync(Booking booking)
+    public async Task<Hotel> AddAsync(Hotel hotel)
     {
-        await _context.Bookings.AddAsync(booking);
+        await _context.Hotels.AddAsync(hotel);
         await _context.SaveChangesAsync();
-        return booking;
+        return hotel;
     }
 
-    public async Task<bool> UpdateAsync(Booking booking)
+    public async Task<bool> UpdateAsync(Hotel hotel)
     {
-        var exists = await _context.Bookings.AnyAsync(b => b.Id == booking.Id);
-        if (exists is false) 
+        var exists = await _context.Hotels.AnyAsync(b => b.Id == hotel.Id);
+        if (exists is false)
             return false;
 
-        _context.Bookings.Update(booking);
+        _context.Hotels.Update(hotel);
         await _context.SaveChangesAsync();
         return true;
     }
+
     public async Task<bool> DeleteAsync(int id)
     {
-        var entity = await _context.Bookings.FindAsync(id);
+        var entity = await _context.Hotels.FindAsync(id);
         if (entity is null)
             return false;
 
-        _context.Bookings.Remove(entity);
+        _context.Hotels.Remove(entity);
         await _context.SaveChangesAsync();
         return true;
     }

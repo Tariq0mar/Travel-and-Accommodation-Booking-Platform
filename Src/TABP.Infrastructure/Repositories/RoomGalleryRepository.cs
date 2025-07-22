@@ -8,23 +8,24 @@ using TABP.Infrastructure.QueryExtensions.EntityFilterExtensions;
 
 namespace TABP.Infrastructure.Repositories;
 
-public class BookingRepository : IBookingRepository
+public class RoomGalleryRepository : IRoomGalleryRepository
 {
     private readonly AppDbContext _context;
 
-    public BookingRepository(AppDbContext context)
+    public RoomGalleryRepository(AppDbContext context)
     {
         _context = context;
     }
-    public async Task<Booking?> GetByIdAsync(int id)
+
+    public async Task<RoomGallery?> GetByIdAsync(int id)
     {
-        return await _context.Bookings
+        return await _context.RoomGalleries
             .FirstOrDefaultAsync(b => b.Id == id);
     }
 
-    public async Task<IEnumerable<Booking>> GetAllAsync(BookingFilter filter)
+    public async Task<IEnumerable<RoomGallery>> GetAllAsync(RoomGalleryFilter filter)
     {
-        var query = _context.Bookings.AsQueryable();
+        var query = _context.RoomGalleries.AsQueryable();
 
         query = query.ApplyFilter(filter)
             .ApplySorting(filter.Sort)
@@ -33,30 +34,31 @@ public class BookingRepository : IBookingRepository
         return await query.ToListAsync();
     }
 
-    public async Task<Booking> AddAsync(Booking booking)
+    public async Task<RoomGallery> AddAsync(RoomGallery roomGallery)
     {
-        await _context.Bookings.AddAsync(booking);
+        await _context.RoomGalleries.AddAsync(roomGallery);
         await _context.SaveChangesAsync();
-        return booking;
+        return roomGallery;
     }
 
-    public async Task<bool> UpdateAsync(Booking booking)
+    public async Task<bool> UpdateAsync(RoomGallery roomGallery)
     {
-        var exists = await _context.Bookings.AnyAsync(b => b.Id == booking.Id);
-        if (exists is false) 
+        var exists = await _context.RoomGalleries.AnyAsync(b => b.Id == roomGallery.Id);
+        if (exists is false)
             return false;
 
-        _context.Bookings.Update(booking);
+        _context.RoomGalleries.Update(roomGallery);
         await _context.SaveChangesAsync();
         return true;
     }
+
     public async Task<bool> DeleteAsync(int id)
     {
-        var entity = await _context.Bookings.FindAsync(id);
+        var entity = await _context.RoomGalleries.FindAsync(id);
         if (entity is null)
             return false;
 
-        _context.Bookings.Remove(entity);
+        _context.RoomGalleries.Remove(entity);
         await _context.SaveChangesAsync();
         return true;
     }

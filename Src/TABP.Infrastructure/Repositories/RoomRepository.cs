@@ -8,23 +8,24 @@ using TABP.Infrastructure.QueryExtensions.EntityFilterExtensions;
 
 namespace TABP.Infrastructure.Repositories;
 
-public class BookingRepository : IBookingRepository
+public class RoomRepository : IRoomRepository
 {
     private readonly AppDbContext _context;
 
-    public BookingRepository(AppDbContext context)
+    public RoomRepository(AppDbContext context)
     {
         _context = context;
     }
-    public async Task<Booking?> GetByIdAsync(int id)
+
+    public async Task<Room?> GetByIdAsync(int id)
     {
-        return await _context.Bookings
+        return await _context.Rooms
             .FirstOrDefaultAsync(b => b.Id == id);
     }
 
-    public async Task<IEnumerable<Booking>> GetAllAsync(BookingFilter filter)
+    public async Task<IEnumerable<Room>> GetAllAsync(RoomFilter filter)
     {
-        var query = _context.Bookings.AsQueryable();
+        var query = _context.Rooms.AsQueryable();
 
         query = query.ApplyFilter(filter)
             .ApplySorting(filter.Sort)
@@ -33,30 +34,31 @@ public class BookingRepository : IBookingRepository
         return await query.ToListAsync();
     }
 
-    public async Task<Booking> AddAsync(Booking booking)
+    public async Task<Room> AddAsync(Room room)
     {
-        await _context.Bookings.AddAsync(booking);
+        await _context.Rooms.AddAsync(room);
         await _context.SaveChangesAsync();
-        return booking;
+        return room;
     }
 
-    public async Task<bool> UpdateAsync(Booking booking)
+    public async Task<bool> UpdateAsync(Room room)
     {
-        var exists = await _context.Bookings.AnyAsync(b => b.Id == booking.Id);
-        if (exists is false) 
+        var exists = await _context.Rooms.AnyAsync(b => b.Id == room.Id);
+        if (exists is false)
             return false;
 
-        _context.Bookings.Update(booking);
+        _context.Rooms.Update(room);
         await _context.SaveChangesAsync();
         return true;
     }
+
     public async Task<bool> DeleteAsync(int id)
     {
-        var entity = await _context.Bookings.FindAsync(id);
+        var entity = await _context.Rooms.FindAsync(id);
         if (entity is null)
             return false;
 
-        _context.Bookings.Remove(entity);
+        _context.Rooms.Remove(entity);
         await _context.SaveChangesAsync();
         return true;
     }

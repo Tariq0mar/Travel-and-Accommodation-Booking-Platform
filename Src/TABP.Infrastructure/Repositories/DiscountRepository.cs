@@ -8,23 +8,24 @@ using TABP.Infrastructure.QueryExtensions.EntityFilterExtensions;
 
 namespace TABP.Infrastructure.Repositories;
 
-public class BookingRepository : IBookingRepository
+public class DiscountRepository : IDiscountRepository
 {
     private readonly AppDbContext _context;
 
-    public BookingRepository(AppDbContext context)
+    public DiscountRepository(AppDbContext context)
     {
         _context = context;
     }
-    public async Task<Booking?> GetByIdAsync(int id)
+
+    public async Task<Discount?> GetByIdAsync(int id)
     {
-        return await _context.Bookings
+        return await _context.Discounts
             .FirstOrDefaultAsync(b => b.Id == id);
     }
 
-    public async Task<IEnumerable<Booking>> GetAllAsync(BookingFilter filter)
+    public async Task<IEnumerable<Discount>> GetAllAsync(DiscountFilter filter)
     {
-        var query = _context.Bookings.AsQueryable();
+        var query = _context.Discounts.AsQueryable();
 
         query = query.ApplyFilter(filter)
             .ApplySorting(filter.Sort)
@@ -33,30 +34,31 @@ public class BookingRepository : IBookingRepository
         return await query.ToListAsync();
     }
 
-    public async Task<Booking> AddAsync(Booking booking)
+    public async Task<Discount> AddAsync(Discount discount)
     {
-        await _context.Bookings.AddAsync(booking);
+        await _context.Discounts.AddAsync(discount);
         await _context.SaveChangesAsync();
-        return booking;
+        return discount;
     }
 
-    public async Task<bool> UpdateAsync(Booking booking)
+    public async Task<bool> UpdateAsync(Discount discount)
     {
-        var exists = await _context.Bookings.AnyAsync(b => b.Id == booking.Id);
-        if (exists is false) 
+        var exists = await _context.Discounts.AnyAsync(b => b.Id == discount.Id);
+        if (exists is false)
             return false;
 
-        _context.Bookings.Update(booking);
+        _context.Discounts.Update(discount);
         await _context.SaveChangesAsync();
         return true;
     }
+
     public async Task<bool> DeleteAsync(int id)
     {
-        var entity = await _context.Bookings.FindAsync(id);
+        var entity = await _context.Discounts.FindAsync(id);
         if (entity is null)
             return false;
 
-        _context.Bookings.Remove(entity);
+        _context.Discounts.Remove(entity);
         await _context.SaveChangesAsync();
         return true;
     }

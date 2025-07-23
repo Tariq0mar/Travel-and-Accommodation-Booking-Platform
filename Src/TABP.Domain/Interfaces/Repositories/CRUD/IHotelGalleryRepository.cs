@@ -1,0 +1,14 @@
+﻿using TABP.Domain.Entities;
+using TABP.Domain.QueryFilters.EntitiesFilters;
+
+namespace TABP.Domain.Interfaces.Repositories.CRUD;
+
+public interface IHotelGalleryRepository
+{
+    Task<HotelGallery?> GetByIdAsync(int id);
+    Task<IEnumerable<HotelGallery>> GetAllAsync(HotelGalleryFilter filter);
+    Task<HotelGallery> AddAsync(HotelGallery hotelGallery);
+    Task<bool> UpdateAsync(HotelGallery hotelGallery);
+    Task<bool> DeleteAsync(int id);
+    Task SaveChangesAsync();
+}

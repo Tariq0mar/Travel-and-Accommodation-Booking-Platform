@@ -2,7 +2,6 @@
 using TABP.Domain.Exceptions.ClientExceptions;
 using TABP.Domain.Interfaces.Repositories.Business;
 using TABP.Domain.Interfaces.Services.Business;
-using TABP.Domain.Interfaces.Services.CRUD;
 
 namespace TABP.Application.Services.Business;
 
@@ -30,7 +29,8 @@ public class LoginService : ILoginService
         var userCredentials = new UserCredentials
         {
             Id = user.Id,
-            Name = user.UserName
+            Name = user.UserName,
+            Role = user.UserRole
         };
 
         return _generateTokenService.GetToken(userCredentials);

@@ -2,11 +2,11 @@
 using FluentValidation;
 using FluentValidation.Results;
 using Moq;
-using TABP.Application.Services;
+using TABP.Application.Services.CRUD;
 using TABP.Domain.Entities;
 using TABP.Domain.Exceptions.ClientExceptions;
 using TABP.Domain.Exceptions.ServerExceptions;
-using TABP.Domain.Interfaces.Repositories;
+using TABP.Domain.Interfaces.Repositories.CRUD;
 using Xunit;
 
 public class HotelServiceTests

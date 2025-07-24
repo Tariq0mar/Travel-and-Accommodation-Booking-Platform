@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TABP.Domain.Entities;
 using TABP.Domain.Interfaces.Services.CRUD;
@@ -7,6 +8,7 @@ using TABP.WebAPI.Models.Discount;
 
 namespace TABP.WebAPI.Controllers.CRUD;
 
+[Authorize(Roles = "Admin")]
 [ApiController]
 [Route("api/discount")]
 public class DiscountController : ControllerBase

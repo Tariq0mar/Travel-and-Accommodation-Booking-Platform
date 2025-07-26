@@ -2,11 +2,11 @@
 using FluentValidation;
 using FluentValidation.Results;
 using Moq;
-using TABP.Application.Services.CRUD;
+using TABP.Application.Services;
 using TABP.Domain.Entities;
 using TABP.Domain.Exceptions.ClientExceptions;
 using TABP.Domain.Exceptions.ServerExceptions;
-using TABP.Domain.Interfaces.Repositories.CRUD;
+using TABP.Domain.Interfaces.Repositories;
 using Xunit;
 
 public class DiscountServiceTests

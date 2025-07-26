@@ -21,6 +21,11 @@ public class ReviewService : IReviewService
         _reviewValidator = reviewValidator ?? throw new ArgumentNullException(nameof(reviewValidator));
     }
 
+    public async Task<IEnumerable<Review>> GetByUserIdAsync(int id)
+    {
+        return await _reviewRepository.GetByUserIdAsync(id);
+    }
+
     public async Task<Review> GetByIdAsync(int id)
     {
         var review = await _reviewRepository.GetByIdAsync(id);

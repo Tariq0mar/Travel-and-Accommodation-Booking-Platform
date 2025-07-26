@@ -31,6 +31,15 @@ public class HotelController : ControllerBase
         return Ok(dto);
     }
 
+    [HttpGet("FullDetails/{id}")]
+    public async Task<ActionResult<HotelFullDetailsResponseDto>> GetByIdFullDetails(int id)
+    {
+        var hotel = await _hotelService.GetByIdFullDetailsAsync(id);
+
+        var dto = _mapper.Map<HotelFullDetailsResponseDto>(hotel);
+        return Ok(dto);
+    }
+
     [HttpGet("hotel-search")]
     public async Task<ActionResult<IEnumerable<HotelResponseDto>>> GetFiltered([FromQuery] HotelFilterDto query)
     {

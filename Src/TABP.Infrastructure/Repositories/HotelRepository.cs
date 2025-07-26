@@ -23,6 +23,30 @@ public class HotelRepository : IHotelRepository
             .FirstOrDefaultAsync(b => b.Id == id);
     }
 
+    public async Task<Hotel?> GetByIdFullDetailsAsync(int id)
+    {
+        return await _context.Hotels
+                .Include(h => h.Location)
+                .Include(h => h.HotelGalleries).ThenInclude(hg => hg.Gallery)
+                .Include(h => h.HotelAmenities).ThenInclude(ha => ha.Amenity)
+                .Include(h => h.HotelDiscounts).ThenInclude(hd => hd.Discount)
+                .Include(h => h.Rooms)
+                    .ThenInclude(r => r.RoomCategory)
+                .Include(h => h.Rooms)
+                    .ThenInclude(r => r.RoomAmenities)
+                        .ThenInclude(ra => ra.Amenity)
+                .Include(h => h.Rooms)
+                    .ThenInclude(r => r.RoomCategory)
+                        .ThenInclude(rc => rc.RoomCategoryDiscounts)
+                            .ThenInclude(rcd => rcd.Discount)
+                .Include(h => h.Rooms)
+                    .ThenInclude(r => r.RoomGalleries)
+                        .ThenInclude(rg => rg.Gallery)
+                .Include(h => h.Reviews)
+                    .ThenInclude(r => r.User)
+                .FirstOrDefaultAsync(h => h.Id == id);
+    }
+
     public async Task<IEnumerable<Hotel>> GetAllAsync(HotelFilter filter)
     {
         var query = _context.Hotels.AsQueryable();

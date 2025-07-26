@@ -23,6 +23,17 @@ public class RoomRepository : IRoomRepository
             .FirstOrDefaultAsync(b => b.Id == id);
     }
 
+    public async Task<Room?> GetByIdFullDetailsAsync(int id)
+    {
+        return await _context.Rooms
+                .Include(r => r.RoomCategory)
+                    .ThenInclude(c => c.RoomCategoryDiscounts)
+                        .ThenInclude(rc => rc.Discount)
+                .Include(r => r.Hotel)
+                .Include(r => r.RoomGalleries)
+                .FirstOrDefaultAsync(r => r.Id == id);
+    }
+
     public async Task<IEnumerable<Room>> GetAllAsync(RoomFilter filter)
     {
         var query = _context.Rooms.AsQueryable();

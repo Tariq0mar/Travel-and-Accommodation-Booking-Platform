@@ -43,6 +43,15 @@ public class RoomController : ControllerBase
         return Ok(dtos);
     }
 
+    [HttpGet("FullDetails/{id}")]
+    public async Task<ActionResult<RoomFullDetailsResponseDto>> GetByIdFullDetails(int id)
+    {
+        var hotel = await _roomService.GetByIdFullDetailsAsync(id);
+
+        var dto = _mapper.Map<RoomFullDetailsResponseDto>(hotel);
+        return Ok(dto);
+    }
+
     [HttpPost]
     public async Task<ActionResult<RoomResponseDto>> Create([FromBody] RoomRequestDto room)
     {

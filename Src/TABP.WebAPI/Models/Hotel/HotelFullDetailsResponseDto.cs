@@ -13,7 +13,7 @@ public class HotelFullDetailsResponseDto
     public string Name { get; set; }
     public LocationResponseDto Location { get; set; }
     public List<GalleryResponseDto> Galleries { get; set; }
-    public List<RoomResponseDto> Rooms { get; set; }
+    public List<RoomFullDetailsResponseDto> Rooms { get; set; }
     public List<AmenityResponseDto> Amenities { get; set; }
     public List<DiscountResponseDto> Discounts { get; set; }
     public List<ReviewResponseDto> Reviews { get; set; }

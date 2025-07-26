@@ -43,7 +43,30 @@ public class LocationController : ControllerBase
         return Ok(dtos);
     }
 
-    [HttpPost]
+    [HttpGet("city-visitors-details")]
+    public async Task<ActionResult<List<CityVisitorsResponseDto>>> GetCityVisitorsDetails ()
+    { 
+        var locations = await _locationService.GetAllAsync(new LocationFilter());
+        
+        var cityDetails = locations.Select(loc => new CityVisitorsResponseDto
+            {
+                City = loc.City,
+                VisitorsPerYear = loc.Users
+                        .GroupBy(u => u.CreatedAt.Year)
+                        .Select(g => new VisitorCountResponseDto
+                        {
+                            Year = g.Key,
+                            VisitorsCount = g.Count()
+                        })
+                        .OrderBy(v => v.Year)
+                        .ToList()
+            })
+            .ToList();
+
+        return cityDetails;
+    }
+
+        [HttpPost]
     public async Task<ActionResult<LocationResponseDto>> Create([FromBody] LocationRequestDto location)
     {
         var newLocation = _mapper.Map<Location>(location);

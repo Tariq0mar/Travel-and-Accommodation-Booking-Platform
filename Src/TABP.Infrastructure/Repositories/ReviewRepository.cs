@@ -16,6 +16,11 @@ public class ReviewRepository : IReviewRepository
     {
         _context = context;
     }
+    
+    public async Task<IEnumerable<Review>> GetByUserIdAsync(int id)
+    {
+        return await _context.Reviews.Where(r => r.UserId == id).ToListAsync();
+    }
 
     public async Task<Review?> GetByIdAsync(int id)
     {

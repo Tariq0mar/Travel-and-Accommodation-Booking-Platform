@@ -6,6 +6,7 @@ namespace TABP.Domain.Interfaces.Repositories;
 public interface IHotelRepository
 {
     Task<Hotel?> GetByIdAsync(int id);
+    Task<Hotel?> GetByIdFullDetailsAsync(int id);
     Task<IEnumerable<Hotel>> GetAllAsync(HotelFilter filter);
     Task<Hotel> AddAsync(Hotel hotel);
     Task<bool> UpdateAsync(Hotel hotel);

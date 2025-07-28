@@ -23,6 +23,18 @@ public class HotelService : IHotelService
 
     public async Task<Hotel> GetByIdAsync(int id)
     {
+        var hotel = await _hotelRepository.GetByIdFullDetailsAsync(id);
+
+        if (hotel is null)
+        {
+            throw new NotFoundException($"Hotel with Id = {id} not found.");
+        }
+
+        return hotel;
+    }
+
+    public async Task<Hotel> GetByIdFullDetailsAsync(int id)
+    {
         var hotel = await _hotelRepository.GetByIdAsync(id);
 
         if (hotel is null)

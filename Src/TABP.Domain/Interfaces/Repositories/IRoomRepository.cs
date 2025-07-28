@@ -6,6 +6,7 @@ namespace TABP.Domain.Interfaces.Repositories;
 public interface IRoomRepository
 {
     Task<Room?> GetByIdAsync(int id);
+    Task<Room?> GetByIdFullDetailsAsync(int id);
     Task<IEnumerable<Room>> GetAllAsync(RoomFilter filter);
     Task<Room> AddAsync(Room room);
     Task<bool> UpdateAsync(Room room);

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TABP.Domain.Entities;
 using TABP.Domain.Interfaces.Services;
 using TABP.Domain.QueryFilters.EntitiesFilters;
@@ -22,7 +23,23 @@ public class ReviewController : ControllerBase
         _mapper = mapper ?? throw new ArgumentException(nameof(mapper));
     }
 
+    [HttpGet("my-reviews")]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<ReviewResponseDto>>> GetMyReviews()
+    {
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userIdClaim))
+            return Unauthorized("User ID not found in token");
+
+        var userId = int.Parse(userIdClaim);
+        var userReviews = await _reviewService.GetByUserIdAsync(userId);
+        var dtos = userReviews.Select(x => _mapper.Map<ReviewResponseDto>(x));
+
+        return Ok(dtos);
+    }
+
     [HttpGet("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<ReviewResponseDto>> GetById(int id)
     {
         var review = await _reviewService.GetByIdAsync(id);
@@ -32,6 +49,7 @@ public class ReviewController : ControllerBase
     }
 
     [HttpGet("review-search")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<IEnumerable<ReviewResponseDto>>> GetFiltered([FromQuery] ReviewFilterDto query)
     {
         var newQuery = _mapper.Map<ReviewFilter>(query);
@@ -44,6 +62,7 @@ public class ReviewController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult<ReviewResponseDto>> Create([FromBody] ReviewRequestDto review)
     {
         var newReview = _mapper.Map<Review>(review);
@@ -56,6 +75,7 @@ public class ReviewController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Update(int id, [FromBody] ReviewRequestDto review)
     {
         var newReview = _mapper.Map<Review>(review);
@@ -66,6 +86,7 @@ public class ReviewController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Delete(int id)
     {
         await _reviewService.DeleteAsync(id);

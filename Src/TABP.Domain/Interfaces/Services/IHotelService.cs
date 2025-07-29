@@ -6,6 +6,7 @@ namespace TABP.Domain.Interfaces.Services;
 public interface IHotelService
 {
     Task<Hotel> GetByIdAsync(int id);
+    Task<Hotel> GetByIdFullDetailsAsync(int id);
     Task<IEnumerable<Hotel>> GetAllAsync(HotelFilter queryFilter);
     Task<Hotel> AddAsync(Hotel hotel);
     Task UpdateAsync(Hotel hotel);

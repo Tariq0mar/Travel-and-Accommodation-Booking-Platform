@@ -33,6 +33,18 @@ public class RoomService : IRoomService
         return room;
     }
 
+    public async Task<Room> GetByIdFullDetailsAsync(int id)
+    {
+        var room = await _roomRepository.GetByIdFullDetailsAsync(id);
+
+        if (room is null)
+        {
+            throw new NotFoundException($"Room with Id = {id} not found.");
+        }
+
+        return room;
+    }
+
     public async Task<IEnumerable<Room>> GetAllAsync(RoomFilter queryFilter)
     {
         return await _roomRepository.GetAllAsync(queryFilter);

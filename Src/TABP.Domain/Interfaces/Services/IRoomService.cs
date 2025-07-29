@@ -6,6 +6,7 @@ namespace TABP.Domain.Interfaces.Services;
 public interface IRoomService
 {
     Task<Room> GetByIdAsync(int id);
+    Task<Room> GetByIdFullDetailsAsync(int id);
     Task<IEnumerable<Room>> GetAllAsync(RoomFilter queryFilter);
     Task<Room> AddAsync(Room room);
     Task UpdateAsync(Room room);

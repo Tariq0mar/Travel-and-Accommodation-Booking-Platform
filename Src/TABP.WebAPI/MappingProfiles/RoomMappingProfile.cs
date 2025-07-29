@@ -12,5 +12,6 @@ public class RoomMappingProfile : Profile
         CreateMap<RoomRequestDto, Room>();
         CreateMap<RoomFilterDto, RoomFilter>();
         CreateMap<Room, RoomResponseDto>();
+        CreateMap<Room, RoomFullDetailsResponseDto>();
     }
 }

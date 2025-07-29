@@ -1,9 +1,11 @@
 ﻿using FluentValidation;
+using System.Reflection;
 using TABP.Domain.Entities;
 using TABP.Domain.Exceptions.ClientExceptions;
 using TABP.Domain.Exceptions.ServerExceptions;
 using TABP.Domain.Interfaces.Repositories;
 using TABP.Domain.Interfaces.Services;
+using TABP.Domain.Models.BookingRoom;
 using TABP.Domain.QueryFilters.EntitiesFilters;
 
 namespace TABP.Application.Services;
@@ -11,15 +13,20 @@ namespace TABP.Application.Services;
 public class BookingService : IBookingService
 {
     private readonly IBookingRepository _bookingRepository;
+    private readonly ICartItemRepository _cartItemRepository;
     private readonly IValidator<Booking> _bookingValidator;
 
     public BookingService(
         IBookingRepository bookingRepository,
+        ICartItemRepository cartItemRepository,
+        IRoomRepository roomRepository,
         IValidator<Booking> bookingValidator)
     {
         _bookingRepository = bookingRepository ?? throw new ArgumentNullException(nameof(bookingRepository));
+        _cartItemRepository = cartItemRepository ?? throw new ArgumentNullException(nameof(cartItemRepository));
         _bookingValidator = bookingValidator ?? throw new ArgumentNullException(nameof(bookingValidator));
     }
+
     public async Task<Booking> GetByIdAsync(int id)
     {
         var booking = await _bookingRepository.GetByIdAsync(id);
@@ -86,8 +93,11 @@ public class BookingService : IBookingService
 
         await _bookingRepository.SaveChangesAsync();
     }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 1924713177a05652d7a24e8be62cebc9ee764947
 
     public async Task BookRoomAndAddToCartAsync(BookingRoomModel model)
     {
@@ -141,7 +151,13 @@ public class BookingService : IBookingService
         }
 
         await _bookingRepository.CommitTransactionAsync();
+<<<<<<< HEAD
     }
 
 >>>>>>> Stashed changes
+=======
+        await _bookingRepository.SaveChangesAsync();
+    }
+
+>>>>>>> 1924713177a05652d7a24e8be62cebc9ee764947
 }

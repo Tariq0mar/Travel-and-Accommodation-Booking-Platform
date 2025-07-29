@@ -11,6 +11,6 @@ public class CartItem
     public bool BookingConfirmed { get; set; } = false;
     public bool PaymentCompleted { get; set; } = false;
 
-    public required User User { get; set; }
-    public required Room Room { get; set; }
+    public User User { get; set; }
+    public Room Room { get; set; }
 }

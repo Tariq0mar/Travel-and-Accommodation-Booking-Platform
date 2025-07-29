@@ -12,5 +12,6 @@ public class HotelMappingProfile : Profile
         CreateMap<HotelRequestDto, Hotel>();
         CreateMap<HotelFilterDto, HotelFilter>();
         CreateMap<Hotel, HotelResponseDto>();
+        CreateMap<Hotel, HotelFullDetailsResponseDto>();
     }
 }

@@ -84,17 +84,42 @@ public class BookingRepository : IBookingRepository
         if (_currentTransaction != null)
             return;
 
-        _currentTransaction = await _context.Database.BeginTransactionAsync();
+        // Use SERIALIZABLE to prevent concurrent overlapping bookings
+        _currentTransaction = await _context.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable);
     }
 
     public async Task CommitTransactionAsync()
     {
-        if (_currentTransaction == null)
-            return;
+        try
+        {
+            if (_currentTransaction == null)
+                return;
 
-        await _context.SaveChangesAsync();
-        await _currentTransaction.CommitAsync();
-        await _currentTransaction.DisposeAsync();
-        _currentTransaction = null;
+            await _context.SaveChangesAsync();
+            await _currentTransaction.CommitAsync();
+        }
+        catch
+        {
+            await RollbackTransactionAsync();
+            throw;
+        }
+        finally
+        {
+            if (_currentTransaction != null)
+            {
+                await _currentTransaction.DisposeAsync();
+                _currentTransaction = null;
+            }
+        }
+    }
+
+    public async Task RollbackTransactionAsync()
+    {
+        if (_currentTransaction != null)
+        {
+            await _currentTransaction.RollbackAsync();
+            await _currentTransaction.DisposeAsync();
+            _currentTransaction = null;
+        }
     }
 }

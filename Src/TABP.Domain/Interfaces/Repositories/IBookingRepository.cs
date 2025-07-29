@@ -14,4 +14,5 @@ public interface IBookingRepository
     Task<bool> IsRoomAvailableAsync(int roomId, DateTime startDate, DateTime endDate);
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();
+    Task RollbackTransactionAsync();
 }

@@ -67,4 +67,9 @@ public class CartItemRepository : ICartItemRepository
     {
         await _context.SaveChangesAsync();
     }
+
+    public async Task<CartItem?> GetUserRoomItemAsync(int userId, int roomId)
+    {
+        return await _context.CartItems.Where(c => c.UserId == userId && c.RoomId == roomId).FirstOrDefaultAsync();
+    }
 }

@@ -17,7 +17,7 @@ public class Booking
     public required DateTime EndDate { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    public required User User { get; set; }
-    public required Room Room { get; set; }
+    public  User User { get; set; }
+    public  Room Room { get; set; }
     public ICollection<Payment> Payments { get; set; } = new List<Payment>();
 }

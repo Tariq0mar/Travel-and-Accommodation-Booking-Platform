@@ -1,4 +1,16 @@
+# Travel-and-Accommodation-Booking-Platform
+
+## Overview
+
+This project is a comprehensive RESTful API designed to manage various entities related to a hospitality or travel booking system. It provides endpoints to handle operations on galleries, hotels, rooms, amenities, discounts, users, payments, reviews, and locations.
+
+The API supports full CRUD (Create, Read, Update, Delete) functionality with filtered search capabilities and specialized endpoints for detailed queries such as visitor statistics and user-specific reviews. Authentication and authorization are integrated to secure sensitive operations.
+
+This solution is ideal for building backend services for hotel booking platforms, travel agencies, or hospitality management systems, offering extensibility and scalability through a clean, organized architecture.
+
+
 ## API End points 
+
 ## Amenity Endpoints
 
 | HTTP Method | Endpoint                    | Description                     |
@@ -42,6 +54,162 @@
 | POST        | `/api/discount`             | Create a new discount            |
 | PUT         | `/api/discount/{id}`         | Update an existing discount by ID |
 | DELETE      | `/api/discount/{id}`         | Delete a discount by ID         |
+
+
+
+## Gallery Endpoints
+
+| HTTP Method | Endpoint                     | Description                  |
+|-------------|------------------------------|------------------------------|
+| GET         | /api/gallery/{id}             | Get a gallery item by ID      |
+| GET         | /api/gallery/gallery-search  | Retrieve filtered gallery items |
+| POST        | /api/gallery                 | Create a new gallery item     |
+| PUT         | /api/gallery/{id}            | Update a gallery item by ID   |
+| DELETE      | /api/gallery/{id}            | Delete a gallery item by ID   |
+
+## HotelAmenity Endpoints
+
+| HTTP Method | Endpoint                           | Description                     |
+|-------------|----------------------------------|---------------------------------|
+| GET         | /api/hotelamenity/{id}            | Get a hotel amenity by ID        |
+| GET         | /api/hotelamenity/hotelamenity-search | Retrieve filtered hotel amenities |
+| POST        | /api/hotelamenity                | Create a new hotel amenity       |
+| PUT         | /api/hotelamenity/{id}           | Update a hotel amenity by ID     |
+| DELETE      | /api/hotelamenity/{id}           | Delete a hotel amenity by ID     |
+
+## Hotel Endpoints
+
+| HTTP Method | Endpoint                       | Description                 |
+|-------------|--------------------------------|-----------------------------|
+| GET         | /api/hotel/{id}                | Get a hotel by ID           |
+| GET         | /api/hotel/FullDetails/{id}   | Get full details of a hotel by ID |
+| GET         | /api/hotel/hotel-search       | Retrieve filtered hotels    |
+| POST        | /api/hotel                   | Create a new hotel          |
+| PUT         | /api/hotel/{id}               | Update a hotel by ID        |
+| DELETE      | /api/hotel/{id}               | Delete a hotel by ID        |
+
+## HotelDiscount Endpoints
+
+| HTTP Method | Endpoint                        | Description                     |
+|-------------|---------------------------------|---------------------------------|
+| GET         | /api/hoteldiscount/{id}          | Get a hotel discount by ID       |
+| GET         | /api/hoteldiscount/hoteldiscount-search | Retrieve filtered hotel discounts |
+| POST        | /api/hoteldiscount             | Create a new hotel discount      |
+| PUT         | /api/hoteldiscount/{id}         | Update a hotel discount by ID    |
+| DELETE      | /api/hoteldiscount/{id}         | Delete a hotel discount by ID    |
+
+
+## Location Endpoints
+
+| HTTP Method | Endpoint                          | Description                                   |
+|-------------|----------------------------------|-----------------------------------------------|
+| GET         | /api/location/{id}                | Get location by ID                             |
+| GET         | /api/location/location-search    | Retrieve filtered locations                    |
+| GET         | /api/location/city-visitors-details | Get visitors details grouped by city and year |
+| POST        | /api/location                    | Create a new location                          |
+| PUT         | /api/location/{id}               | Update location by ID                          |
+| DELETE      | /api/location/{id}               | Delete location by ID                          |
+
+## Login Endpoint
+
+| HTTP Method | Endpoint       | Description                 |
+|-------------|----------------|-----------------------------|
+| POST        | /api/Login     | User login, returns a token |
+
+## Payment Endpoints
+
+| HTTP Method | Endpoint                 | Description                |
+|-------------|--------------------------|----------------------------|
+| GET         | /api/payment/{id}        | Get payment by ID          |
+| GET         | /api/payment/payment-search | Retrieve filtered payments |
+| POST        | /api/payment             | Create a new payment       |
+| PUT         | /api/payment/{id}        | Update payment by ID       |
+| DELETE      | /api/payment/{id}        | Delete payment by ID       |
+
+## Review Endpoints
+
+| HTTP Method | Endpoint                 | Description                                   |
+|-------------|--------------------------|-----------------------------------------------|
+| GET         | /api/review/my-reviews   | Get reviews of the currently logged-in user  |
+| GET         | /api/review/{id}         | Get review by ID (Admin only)                  |
+| GET         | /api/review/review-search | Retrieve filtered reviews (Admin only)        |
+| POST        | /api/review              | Create a new review (Authorized users)        |
+| PUT         | /api/review/{id}         | Update review by ID (Admin only)               |
+| DELETE      | /api/review/{id}         | Delete review by ID (Admin only)               |
+
+
+
+## RoomAmenity Endpoints
+
+| HTTP Method | Endpoint                        | Description              |
+|-------------|--------------------------------|--------------------------|
+| GET         | /api/roomamenity/{id}           | Get room amenity by ID    |
+| GET         | /api/roomamenity/roomamenity-search | Get filtered room amenities |
+| POST        | /api/roomamenity               | Create a new room amenity |
+| PUT         | /api/roomamenity/{id}          | Update room amenity by ID |
+| DELETE      | /api/roomamenity/{id}          | Delete room amenity by ID |
+
+## RoomCategory Endpoints
+
+| HTTP Method | Endpoint                        | Description               |
+|-------------|--------------------------------|---------------------------|
+| GET         | /api/roomcategory/{id}          | Get room category by ID    |
+| GET         | /api/roomcategory/roomcategory-search | Get filtered room categories |
+| POST        | /api/roomcategory              | Create a new room category |
+| PUT         | /api/roomcategory/{id}         | Update room category by ID |
+| DELETE      | /api/roomcategory/{id}         | Delete room category by ID |
+
+## RoomCategoryDiscount Endpoints
+
+| HTTP Method | Endpoint                               | Description                   |
+|-------------|---------------------------------------|-------------------------------|
+| GET         | /api/roomcategorydiscount/{id}        | Get room category discount by ID |
+| GET         | /api/roomcategorydiscount/roomcategorydiscount-search | Get filtered discounts          |
+| POST        | /api/roomcategorydiscount             | Create a new room category discount |
+| PUT         | /api/roomcategorydiscount/{id}        | Update discount by ID          |
+| DELETE      | /api/roomcategorydiscount/{id}        | Delete discount by ID          |
+
+## Room Endpoints
+
+| HTTP Method | Endpoint                    | Description                    |
+|-------------|-----------------------------|-------------------------------|
+| GET         | /api/room/{id}              | Get room by ID                |
+| GET         | /api/room/room-search       | Get filtered rooms            |
+| GET         | /api/room/FullDetails/{id}  | Get full details of room by ID |
+| POST        | /api/room                  | Create a new room             |
+| PUT         | /api/room/{id}             | Update room by ID             |
+| DELETE      | /api/room/{id}             | Delete room by ID             |
+
+
+## RoomGallery Endpoints
+
+| HTTP Method | Endpoint                         | Description                |
+|-------------|---------------------------------|----------------------------|
+| GET         | /api/roomgallery/{id}            | Get RoomGallery by ID      |
+| GET         | /api/roomgallery/roomgallery-search | Get filtered RoomGalleries  |
+| POST        | /api/roomgallery                | Create a new RoomGallery   |
+| PUT         | /api/roomgallery/{id}           | Update RoomGallery by ID   |
+| DELETE      | /api/roomgallery/{id}           | Delete RoomGallery by ID   |
+
+## User Endpoints
+
+| HTTP Method | Endpoint                   | Description             |
+|-------------|----------------------------|-------------------------|
+| GET         | /api/user/{id}             | Get User by ID          |
+| GET         | /api/user/user-search      | Get filtered Users      |
+| POST        | /api/user                 | Create a new User       |
+| PUT         | /api/user/{id}            | Update User by ID       |
+| DELETE      | /api/user/{id}            | Delete User by ID       |
+
+## UserDiscount Endpoints
+
+| HTTP Method | Endpoint                         | Description                |
+|-------------|---------------------------------|----------------------------|
+| GET         | /api/userdiscount/{id}           | Get UserDiscount by ID     |
+| GET         | /api/userdiscount/userdiscount-search | Get filtered UserDiscounts |
+| POST        | /api/userdiscount               | Create a new UserDiscount  |
+| PUT         | /api/userdiscount/{id}          | Update UserDiscount by ID  |
+| DELETE      | /api/userdiscount/{id}          | Delete UserDiscount by ID  |
 
 
 

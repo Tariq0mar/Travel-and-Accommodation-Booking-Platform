@@ -64,7 +64,9 @@ app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseRouting();
 
-app.UseRateLimiter(); 
+app.UseRateLimiter();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

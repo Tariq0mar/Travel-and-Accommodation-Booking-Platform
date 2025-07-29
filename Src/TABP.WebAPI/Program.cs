@@ -1,11 +1,11 @@
 using System.Threading.RateLimiting;
+using TABP.WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-
-// add rate limiter for all controllers 
+//Register Rate Limiter
 builder.Services.AddRateLimiter(options =>
 {
     options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
@@ -23,7 +23,13 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
+//Register your middleware
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+app.UseRouting();
+
 app.UseRateLimiter(); 
+
 app.UseAuthorization();
 
 app.MapControllers();

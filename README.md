@@ -1,3 +1,50 @@
+## API End points 
+## Amenity Endpoints
+
+| HTTP Method | Endpoint                    | Description                     |
+|-------------|-----------------------------|---------------------------------|
+| GET         | `/api/amenity/{id}`          | Get an amenity by ID             |
+| GET         | `/api/amenity/amenity-search`| Retrieve a filtered list of amenities |
+| POST        | `/api/amenity`               | Create a new amenity             |
+| PUT         | `/api/amenity/{id}`          | Update an existing amenity by ID |
+| DELETE      | `/api/amenity/{id}`          | Delete an amenity by ID          |
+
+
+## Booking Endpoints
+
+| HTTP Method | Endpoint                    | Description                     |
+|-------------|-----------------------------|---------------------------------|
+| GET         | `/api/booking/{id}`          | Get a booking by ID             |
+| GET         | `/api/booking/booking-search`| Retrieve filtered bookings      |
+| POST        | `/api/booking`               | Create a new booking            |
+| PUT         | `/api/booking/{id}`          | Update an existing booking by ID |
+| DELETE      | `/api/booking/{id}`          | Delete a booking by ID          |
+| POST        | `/api/booking/bookroom`      | Book a room and add it to cart  |
+
+
+## CartItem Endpoints
+
+| HTTP Method | Endpoint                    | Description                     |
+|-------------|-----------------------------|---------------------------------|
+| GET         | `/api/cartitem/{id}`         | Get a cart item by ID           |
+| GET         | `/api/cartitem/cartitem-search` | Retrieve filtered cart items  |
+| POST        | `/api/cartitem`              | Create a new cart item          |
+| PUT         | `/api/cartitem/{id}`         | Update an existing cart item by ID |
+| DELETE      | `/api/cartitem/{id}`         | Delete a cart item by ID        |
+
+
+## Discount Endpoints
+
+| HTTP Method | Endpoint                    | Description                     |
+|-------------|-----------------------------|---------------------------------|
+| GET         | `/api/discount/{id}`         | Get a discount by ID            |
+| GET         | `/api/discount/discount-search` | Retrieve filtered discounts  |
+| POST        | `/api/discount`             | Create a new discount            |
+| PUT         | `/api/discount/{id}`         | Update an existing discount by ID |
+| DELETE      | `/api/discount/{id}`         | Delete a discount by ID         |
+
+
+
 ## Architecture Overview
 
 This project follows the principles of **Clean Architecture**, ensuring separation of concerns and high maintainability. It is organized into distinct layers:

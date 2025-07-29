@@ -1,9 +1,11 @@
 ﻿using FluentValidation;
+using System.Reflection;
 using TABP.Domain.Entities;
 using TABP.Domain.Exceptions.ClientExceptions;
 using TABP.Domain.Exceptions.ServerExceptions;
 using TABP.Domain.Interfaces.Repositories;
 using TABP.Domain.Interfaces.Services;
+using TABP.Domain.Models.BookingRoom;
 using TABP.Domain.QueryFilters.EntitiesFilters;
 
 namespace TABP.Application.Services;
@@ -11,15 +13,20 @@ namespace TABP.Application.Services;
 public class BookingService : IBookingService
 {
     private readonly IBookingRepository _bookingRepository;
+    private readonly ICartItemRepository _cartItemRepository;
     private readonly IValidator<Booking> _bookingValidator;
 
     public BookingService(
         IBookingRepository bookingRepository,
+        ICartItemRepository cartItemRepository,
+        IRoomRepository roomRepository,
         IValidator<Booking> bookingValidator)
     {
         _bookingRepository = bookingRepository ?? throw new ArgumentNullException(nameof(bookingRepository));
+        _cartItemRepository = cartItemRepository ?? throw new ArgumentNullException(nameof(cartItemRepository));
         _bookingValidator = bookingValidator ?? throw new ArgumentNullException(nameof(bookingValidator));
     }
+
     public async Task<Booking> GetByIdAsync(int id)
     {
         var booking = await _bookingRepository.GetByIdAsync(id);
@@ -86,4 +93,60 @@ public class BookingService : IBookingService
 
         await _bookingRepository.SaveChangesAsync();
     }
+
+    public async Task BookRoomAndAddToCartAsync(BookingRoomModel model)
+    {
+        await _bookingRepository.BeginTransactionAsync();
+
+        if (model.StartDate >= model.EndDate)
+            throw new BadRequestException("StartDate must be before EndDate.");
+
+        if (model.AdultsCount is 0 && model.ChildrenCount is 0)
+            throw new BadRequestException("At least one adult or child must be specified.");
+
+        
+        var isAvailable = await _bookingRepository.IsRoomAvailableAsync(model.RoomId, model.StartDate, model.EndDate);
+        if (!isAvailable)
+            throw new InvalidOperationException("Room is already booked for the selected dates.");
+
+        var booking = new Booking
+        {
+            UserId = model.UserId,
+            RoomId = model.RoomId,
+            StartDate = model.StartDate,
+            EndDate = model.EndDate,
+            AdultsCount = model.AdultsCount,
+            ChildrenCount = model.ChildrenCount,
+            Currency = model.Currency,
+            PriceWithoutDiscount = model.PriceWithoutDiscount,
+            PriceWithDiscount = model.PriceWithDiscount,
+            CreatedAt = DateTime.UtcNow,
+        };
+
+        await _bookingRepository.AddAsync(booking);
+
+        var cartItem = await _cartItemRepository.GetUserRoomItemAsync(model.UserId, model.RoomId);
+        if (cartItem is not null)
+        {
+            cartItem.Quantity += 1;
+            await _cartItemRepository.UpdateAsync(cartItem);
+        }
+        else
+        {
+            var newCartItem = new CartItem
+            {
+                UserId = model.UserId,
+                RoomId = model.RoomId,
+                Quantity = 1,
+                BookingConfirmed = true,
+                PaymentCompleted = false,
+                CreatedAt = DateTime.UtcNow
+            };
+            await _cartItemRepository.AddAsync(newCartItem);
+        }
+
+        await _bookingRepository.CommitTransactionAsync();
+        await _bookingRepository.SaveChangesAsync();
+    }
+
 }

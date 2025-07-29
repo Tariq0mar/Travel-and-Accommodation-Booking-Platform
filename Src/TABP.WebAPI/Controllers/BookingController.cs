@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TABP.Domain.Entities;
 using TABP.Domain.Interfaces.Services;
+using TABP.Domain.Models.BookingRoom;
 using TABP.Domain.QueryFilters.EntitiesFilters;
 using TABP.WebAPI.Models.Booking;
 
@@ -70,5 +72,28 @@ public class BookingController : ControllerBase
     {
         await _bookingService.DeleteAsync(id);
         return NoContent();
+    }
+
+    public async Task<IActionResult> BookRoom([FromBody] BookRoomRequestDto dto)
+    {
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (userIdClaim is null)
+            return Unauthorized();
+
+        var bookingRoomModel = new BookingRoomModel
+        {
+            UserId = int.Parse(userIdClaim.Value),
+            RoomId = dto.RoomId,
+            StartDate = dto.StartDate,
+            EndDate = dto.EndDate,
+            AdultsCount = dto.AdultsCount,
+            ChildrenCount = dto.ChildrenCount,
+            Currency = dto.Currency,
+            PriceWithoutDiscount = dto.PriceWithoutDiscount,
+            PriceWithDiscount = dto.PriceWithDiscount,
+        };
+
+        await _bookingService.BookRoomAndAddToCartAsync(bookingRoomModel);
+        return Ok("Room booked and added to cart successfully.");
     }
 }
